@@ -3,7 +3,7 @@
 > **把 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 打包成类 Codex 的桌面应用** —— 原生窗口、系统托盘、关窗进托盘、托盘退出才彻底关停。
 
 <p align="center">
-  <img src="assets/dsh-logo-black.svg" alt="DeepSeek Harness Logo" width="120" />
+  <img src="assets/dsh-logo-badge.svg" alt="DeepSeek Harness Logo" width="96" />
 </p>
 
 <p align="center">
@@ -102,7 +102,7 @@ npm run dist
 ├── main.js               # 主进程：窗口 + 托盘 + 服务生命周期
 ├── runtime/              # dsh 运行时（打进安装包）
 ├── scripts/afterPack.js  # electron-builder 钩子：复制运行时
-├── assets/               # 官方黑白鲸鱼 logo + 应用截图
+├── assets/               # 品牌 logo（蓝底白鲸鱼）+ 应用截图
 └── dist/                 # 构建产物（安装程序 .exe）
 ```
 

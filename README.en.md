@@ -3,7 +3,7 @@
 > **Codex-style desktop app for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)** — native window, system tray, close-to-tray, quit-only-from-tray.
 
 <p align="center">
-  <img src="assets/dsh-logo-black.svg" alt="DeepSeek Harness Logo" width="120" />
+  <img src="assets/dsh-logo-badge.svg" alt="DeepSeek Harness Logo" width="96" />
 </p>
 
 <p align="center">
@@ -102,7 +102,7 @@ quit   ← tray Exit ← hide ← ❌ click ← open window
 ├── main.js               # Main process: window + tray + service lifecycle
 ├── runtime/              # dsh runtime (bundled into installer)
 ├── scripts/afterPack.js  # electron-builder hook: copies runtime
-├── assets/               # Official whale logo + app screenshot
+├── assets/               # Brand logo (blue badge) + app screenshot
 └── dist/                 # Build output (installer .exe)
 ```
 
