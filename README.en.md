@@ -1,69 +1,122 @@
-# DeepSeek Harness Desktop
+# 🐋 DeepSeek Harness Desktop
 
-> English | [中文](README.md)
+> **Codex-style desktop app for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)** — native window, system tray, close-to-tray, quit-only-from-tray.
 
-Package [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) into a Codex-style desktop app:
-native window, system tray residency, close-to-tray (no background cleanup), and fully quits only from the tray.
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078d6.svg)](#)
+[![Electron](https://img.shields.io/badge/Electron-43-47848f.svg)](#)
+[![DSH](https://img.shields.io/badge/DeepSeek%20Harness-0.1.0--rc.6-4d6bfe.svg)](#)
+[![Release](https://img.shields.io/github/v/release/ethanweave/dsh-desktop)](https://github.com/ethanweave/dsh-desktop/releases)
 
-## Features
+Tired of running DeepSeek Harness in a browser tab? This app wraps `dsh web` into a **native desktop application** that feels exactly like Codex: a real window, a system tray icon, and a lifecycle that *you* control.
 
-- 🖥️ **Native desktop window** — no address bar, no menu bar; looks and feels like a standalone app
-- 🧭 **System tray residency** — clicking ❌ only hides the window; the background service and tray keep running
-- 🚀 **Out-of-the-box** — the dsh runtime is bundled; users do **NOT need to install Node.js / npm**
-- 🛑 **Full shutdown** — only tray right-click → Exit truly stops the service and quits the app
-- 🔄 **Auto recovery** — the app auto-starts the dsh web service on launch and detects crashes
+```
+┌─────────────────────────────────────┐
+│  🖥️ Native window (no URL bar)      │  ← double-click to open
+├─────────────────────────────────────┤
+│                                     │
+│        DeepSeek Harness UI          │
+│                                     │
+├─────────────────────────────────────┤
+│  ❌ click → hide to tray (keeps     │
+│  running in background)             │
+└─────────────────────────────────────┘
+        🧭 tray icon →  Exit  → full shutdown
+```
 
-## Download & Install
+## ✨ Features
 
-Download `DeepSeek-Harness-Setup-x.y.z.exe` from [Releases](../../releases),
-double-click to install, and a "DeepSeek Harness" icon will appear on your desktop.
+| | Feature | What it means |
+|---|---|---|
+| 🖥️ | **Native window** | No address bar, no menu bar — looks like a real desktop app, not a browser tab |
+| 🧭 | **System tray residency** | Clicking ❌ only hides the window; the service and tray keep running |
+| 🚀 | **Zero-dependency install** | The dsh runtime is bundled — users **do NOT need Node.js / npm** |
+| 🛑 | **Full shutdown** | Only tray right-click → **Exit** truly stops the service and quits the app |
+| 🔄 | **Auto recovery** | Auto-starts the `dsh web` service on launch; detects crashes |
+| 🔒 | **Single instance** | Second launch focuses the existing window instead of duplicating |
 
-## Usage
+## 📥 Download & Install
+
+Grab **`DeepSeek-Harness-Setup-x.y.z.exe`** from the [Releases page](../../releases).
+
+1. Double-click the installer
+2. A **DeepSeek Harness** icon appears on your desktop
+3. Done — no Node.js, no npm, no config
+
+> The installer bundles the full dsh runtime (~150 MB), so it works on any clean Windows machine.
+
+## 🎮 Usage
 
 | Action | Behavior |
 |---|---|
-| Double-click desktop icon | Opens the UI (starts the service if not running) |
-| Click window ❌ | Hides to system tray; background service keeps running |
-| Double-click tray icon | Shows the window again |
-| Tray right-click → Exit | Full shutdown (close window + stop service + quit app) |
+| **Double-click** desktop icon | Opens the UI (starts service automatically if not running) |
+| **Click ❌** on window | Hides to system tray — background service keeps running |
+| **Double-click** tray icon | Shows the window again |
+| **Tray right-click → Exit** | **Full shutdown** — closes window, stops service, quits app |
 
-## Build from Source
+## 🛠 Build from Source
 
 Requirements: Node.js ≥ 20, npm.
 
 ```bash
-# 1. Install dependencies (electron + electron-builder)
+# 1. Install build dependencies (electron + electron-builder)
 npm install
 
 # 2. Install the dsh runtime (bundled into the installer)
-cd runtime
-npm install --omit=dev
-cd ..
+cd runtime && npm install --omit=dev && cd ..
 
-# 3. Build the NSIS installer (output in dist/)
+# 3. Build the NSIS installer (outputs to dist/)
 npm run dist
 ```
 
-> In China, you may want to use a faster npm mirror:
-> `npm install --registry=https://registry.npmmirror.com`
+> China mirror: `npm install --registry=https://registry.npmmirror.com`
 
-## Environment Variables (Optional)
+## ⚙️ Environment Variables (Optional)
 
 | Variable | Description | Default |
 |---|---|---|
 | `DSH_WEB_PORT` | Service port | `3080` |
 | `DSH_WORKSPACE` | Service working directory | User home |
 
-## How It Works
+## 🔧 How It Works
 
-- The main process (`main.js`) owns the full lifecycle of the dsh web service:
-  on startup it detects the port and spawns the service if not running; on exit it cleans up
-  both the process tree and the port (double safety).
-- The service runs on Electron's built-in Node core (`ELECTRON_RUN_AS_NODE`),
-  so no system-level Node.js is required.
-- The dsh runtime lives at `<resources>/dsh-runtime` (installed) or `./runtime` (dev mode).
+The main process (`main.js`) owns the **full lifecycle** of the dsh web service:
 
-## Credits & License
+```
+launch → port check → (not running?) → spawn dsh web → wait ready → open window
+                                              │
+quit   ← tray Exit ← hide ← ❌ click ← open window
+   │
+   └─ kill process tree + port cleanup (double safety)
+```
+
+- The service runs on **Electron's built-in Node core** (`ELECTRON_RUN_AS_NODE` + `--expose-internals`), so no system Node.js is required
+- The dsh runtime lives at `<resources>/dsh-runtime` (installed) or `./runtime` (dev mode)
+- `afterPack` hook copies the runtime into the installer, bypassing electron-builder's node_modules exclusion
+
+## 🤔 Why not just use the browser?
+
+| | Browser tab | This app |
+|---|---|---|
+| Window | Tab in a browser | Dedicated native window |
+| Close | Loses your place | Hides to tray, instant reopen |
+| Background | Must keep browser open | Service managed independently |
+| Look & feel | Browser chrome everywhere | Clean desktop app |
+
+## 📦 Project Layout
+
+```
+├── main.js               # Main process: window + tray + service lifecycle
+├── runtime/              # dsh runtime (bundled into installer)
+├── scripts/afterPack.js  # electron-builder hook: copies runtime
+└── dist/                 # Build output (installer .exe)
+```
+
+## 📄 Credits & License
 
 - Core engine: [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (MIT License, Copyright (c) 2026 DeepSeek)
-- This desktop shell: MIT License, see [LICENSE](LICENSE)
+- This desktop shell: [MIT License](LICENSE)
+
+---
+
+⭐ If this saves you from another browser tab, consider a star — it helps others find it.
