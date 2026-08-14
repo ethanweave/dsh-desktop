@@ -2,11 +2,14 @@
 
 > **Codex-style desktop app for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)** — native window, system tray, close-to-tray, quit-only-from-tray.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078d6.svg)](#)
-[![Electron](https://img.shields.io/badge/Electron-43-47848f.svg)](#)
-[![DSH](https://img.shields.io/badge/DeepSeek%20Harness-0.1.0--rc.6-4d6bfe.svg)](#)
-[![Release](https://img.shields.io/github/v/release/ethanweave/dsh-desktop)](https://github.com/ethanweave/dsh-desktop/releases)
+<p align="center">
+  <img src="assets/dsh-logo.png" alt="DeepSeek Harness Logo" width="96" />
+</p>
+
+[![Release](https://img.shields.io/github/v/release/ethanweave/dsh-desktop?style=for-the-badge&color=4d6bfe)](https://github.com/ethanweave/dsh-desktop/releases)
+[![Windows](https://img.shields.io/badge/Windows-11_10-0078d6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/ethanweave/dsh-desktop/releases)
+[![Electron](https://img.shields.io/badge/Electron_43-47848f?style=for-the-badge&logo=electron&logoColor=white)](https://www.electronjs.org/)
+[![MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 Tired of running DeepSeek Harness in a browser tab? This app wraps `dsh web` into a **native desktop application** that feels exactly like Codex: a real window, a system tray icon, and a lifecycle that *you* control.
 
@@ -109,12 +112,14 @@ quit   ← tray Exit ← hide ← ❌ click ← open window
 ├── main.js               # Main process: window + tray + service lifecycle
 ├── runtime/              # dsh runtime (bundled into installer)
 ├── scripts/afterPack.js  # electron-builder hook: copies runtime
+├── assets/               # Brand icon
 └── dist/                 # Build output (installer .exe)
 ```
 
 ## 📄 Credits & License
 
 - Core engine: [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (MIT License, Copyright (c) 2026 DeepSeek)
+- Logo: DeepSeek Harness official brand ([deepseek-ai](https://github.com/deepseek-ai))
 - This desktop shell: [MIT License](LICENSE)
 
 ---

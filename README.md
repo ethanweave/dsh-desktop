@@ -2,11 +2,14 @@
 
 > **把 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 打包成类 Codex 的桌面应用** —— 原生窗口、系统托盘、关窗进托盘、托盘退出才彻底关停。
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078d6.svg)](#)
-[![Electron](https://img.shields.io/badge/Electron-43-47848f.svg)](#)
-[![DSH](https://img.shields.io/badge/DeepSeek%20Harness-0.1.0--rc.6-4d6bfe.svg)](#)
-[![Release](https://img.shields.io/github/v/release/ethanweave/dsh-desktop)](https://github.com/ethanweave/dsh-desktop/releases)
+<p align="center">
+  <img src="assets/dsh-logo.png" alt="DeepSeek Harness Logo" width="96" />
+</p>
+
+[![Release](https://img.shields.io/github/v/release/ethanweave/dsh-desktop?style=for-the-badge&color=4d6bfe)](https://github.com/ethanweave/dsh-desktop/releases)
+[![Windows](https://img.shields.io/badge/Windows-11_10-0078d6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/ethanweave/dsh-desktop/releases)
+[![Electron](https://img.shields.io/badge/Electron_43-47848f?style=for-the-badge&logo=electron&logoColor=white)](https://www.electronjs.org/)
+[![MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 厌倦了在浏览器标签页里用 DeepSeek Harness？这个应用把 `dsh web` 封装成**原生桌面应用**，体验对标 Codex：真正的窗口、系统托盘图标、完全由你掌控的生命周期。
 
@@ -108,12 +111,14 @@ npm run dist
 ├── main.js               # 主进程：窗口 + 托盘 + 服务生命周期
 ├── runtime/              # dsh 运行时（打进安装包）
 ├── scripts/afterPack.js  # electron-builder 钩子：复制运行时
+├── assets/               # 品牌图标
 └── dist/                 # 构建产物（安装程序 .exe）
 ```
 
 ## 📄 致谢与许可
 
 - 核心引擎：[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（MIT License, Copyright (c) 2026 DeepSeek）
+- Logo：DeepSeek Harness 官方品牌（[deepseek-ai](https://github.com/deepseek-ai)）
 - 本桌面壳：[MIT License](LICENSE)
 
 ---
