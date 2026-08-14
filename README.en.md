@@ -17,20 +17,6 @@
 
 Tired of running DeepSeek Harness in a browser tab? This app wraps `dsh web` into a **native desktop application** that feels exactly like Codex: a real window, a system tray icon, and a lifecycle that *you* control.
 
-```
-┌─────────────────────────────────────┐
-│  🖥️ Native window (no URL bar)      │  ← double-click to open
-├─────────────────────────────────────┤
-│                                     │
-│        DeepSeek Harness UI          │
-│                                     │
-├─────────────────────────────────────┤
-│  ❌ click → hide to tray (keeps     │
-│  running in background)             │
-└─────────────────────────────────────┘
-        🧭 tray icon →  Exit  → full shutdown
-```
-
 ## ✨ Features
 
 | | Feature | What it means |
@@ -41,6 +27,15 @@ Tired of running DeepSeek Harness in a browser tab? This app wraps `dsh web` int
 | 🛑 | **Full shutdown** | Only tray right-click → **Exit** truly stops the service and quits the app |
 | 🔄 | **Auto recovery** | Auto-starts the `dsh web` service on launch; detects crashes |
 | 🔒 | **Single instance** | Second launch focuses the existing window instead of duplicating |
+
+## 🤔 Why not just use the browser?
+
+| | Browser tab | This app |
+|---|---|---|
+| Window | Tab in a browser | Dedicated native window |
+| Close | Loses your place | Hides to tray, instant reopen |
+| Background | Must keep browser open | Service managed independently |
+| Look & feel | Browser chrome everywhere | Clean desktop app |
 
 ## 📥 Download & Install
 
@@ -100,15 +95,6 @@ quit   ← tray Exit ← hide ← ❌ click ← open window
 - The service runs on **Electron's built-in Node core** (`ELECTRON_RUN_AS_NODE` + `--expose-internals`), so no system Node.js is required
 - The dsh runtime lives at `<resources>/dsh-runtime` (installed) or `./runtime` (dev mode)
 - `afterPack` hook copies the runtime into the installer, bypassing electron-builder's node_modules exclusion
-
-## 🤔 Why not just use the browser?
-
-| | Browser tab | This app |
-|---|---|---|
-| Window | Tab in a browser | Dedicated native window |
-| Close | Loses your place | Hides to tray, instant reopen |
-| Background | Must keep browser open | Service managed independently |
-| Look & feel | Browser chrome everywhere | Clean desktop app |
 
 ## 📦 Project Layout
 
