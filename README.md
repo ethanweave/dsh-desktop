@@ -6,6 +6,10 @@
   <img src="assets/dsh-logo-black.svg" alt="DeepSeek Harness Logo" width="120" />
 </p>
 
+<p align="center">
+  <img src="assets/screenshot.png" alt="DeepSeek Harness Desktop 截图" width="85%" />
+</p>
+
 [![Release](https://img.shields.io/github/v/release/ethanweave/dsh-desktop?style=for-the-badge&color=4d6bfe)](https://github.com/ethanweave/dsh-desktop/releases)
 [![Windows](https://img.shields.io/badge/Windows-11_10-0078d6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/ethanweave/dsh-desktop/releases)
 [![Electron](https://img.shields.io/badge/Electron_43-47848f?style=for-the-badge&logo=electron&logoColor=white)](https://www.electronjs.org/)
@@ -111,7 +115,7 @@ npm run dist
 ├── main.js               # 主进程：窗口 + 托盘 + 服务生命周期
 ├── runtime/              # dsh 运行时（打进安装包）
 ├── scripts/afterPack.js  # electron-builder 钩子：复制运行时
-├── assets/               # 官方黑白鲸鱼 logo（SVG）
+├── assets/               # 官方黑白鲸鱼 logo + 应用截图
 └── dist/                 # 构建产物（安装程序 .exe）
 ```
 

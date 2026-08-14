@@ -6,6 +6,10 @@
   <img src="assets/dsh-logo-black.svg" alt="DeepSeek Harness Logo" width="120" />
 </p>
 
+<p align="center">
+  <img src="assets/screenshot.png" alt="DeepSeek Harness Desktop screenshot" width="85%" />
+</p>
+
 [![Release](https://img.shields.io/github/v/release/ethanweave/dsh-desktop?style=for-the-badge&color=4d6bfe)](https://github.com/ethanweave/dsh-desktop/releases)
 [![Windows](https://img.shields.io/badge/Windows-11_10-0078d6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/ethanweave/dsh-desktop/releases)
 [![Electron](https://img.shields.io/badge/Electron_43-47848f?style=for-the-badge&logo=electron&logoColor=white)](https://www.electronjs.org/)
@@ -112,7 +116,7 @@ quit   ← tray Exit ← hide ← ❌ click ← open window
 ├── main.js               # Main process: window + tray + service lifecycle
 ├── runtime/              # dsh runtime (bundled into installer)
 ├── scripts/afterPack.js  # electron-builder hook: copies runtime
-├── assets/               # Official black-white whale logo (SVG)
+├── assets/               # Official whale logo + app screenshot
 └── dist/                 # Build output (installer .exe)
 ```
 
