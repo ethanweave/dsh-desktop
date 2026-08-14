@@ -1,0 +1,13 @@
+# 依赖与构建产物
+node_modules/
+dist/
+runtime/node_modules/
+runtime/package-lock.json
+
+# 日志与运行时数据
+*.log
+dsh-server.log
+
+# 系统文件
+.DS_Store
+Thumbs.db

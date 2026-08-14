@@ -1,0 +1,62 @@
+{
+  "name": "dsh-desktop",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness 桌面应用（类 Codex）：原生窗口 + 系统托盘",
+  "main": "main.js",
+  "private": true,
+  "author": {
+    "name": "DeepSeek Harness Desktop"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^43.4.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.deepseek.dsh-desktop",
+    "productName": "DeepSeek Harness",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "package.json",
+      "README.md",
+      "LICENSE",
+      "scripts/afterPack.js"
+    ],
+    "extraResources": [
+      {
+        "from": "../dsh.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "afterPack": "./scripts/afterPack.js",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "../dsh.ico",
+      "artifactName": "DeepSeek-Harness-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DeepSeek Harness",
+      "installerIcon": "../dsh.ico",
+      "uninstallerIcon": "../dsh.ico"
+    }
+  }
+}
