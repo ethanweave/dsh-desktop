@@ -27,6 +27,7 @@
       "main.js",
       "package.json",
       "README.md",
+      "README.en.md",
       "LICENSE",
       "scripts/afterPack.js"
     ],

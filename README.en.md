@@ -1,6 +1,6 @@
 # DeepSeek Harness Desktop
 
-> [English](README.en.md) | 中文
+> English | [中文](README.md)
 
 Package [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) into a Codex-style desktop app:
 native window, system tray residency, close-to-tray (no background cleanup), and fully quits only from the tray.
